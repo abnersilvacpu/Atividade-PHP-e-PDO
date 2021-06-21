@@ -8,6 +8,8 @@ session_start();
 
 require("bd/conexao.php");
 
+date_default_timezone_set('America/Sao_Paulo');
+
 ?>
 
 <html>
@@ -41,6 +43,7 @@ require("bd/conexao.php");
                         else{
                     ?>
                         <a href="?pg=area_restrita"><li>Área restrita</li></a>
+                        <a href="?pg=usuario/usuarios"><li>Usuários</li></a>
                     <?php
                         }
                     ?>
@@ -50,11 +53,6 @@ require("bd/conexao.php");
             <main>
             
                 <?php
-
-                    /* Operador ternário para verificar se o pg está setado no GET e não está vazio
-                        Caso verdadeiro: usa o valor do GET["pg"]
-                        Caso falso: usa o valor "inicio"
-                    */
                     $pg = (isset($_GET["pg"]) && !empty($_GET["pg"])) ? $_GET["pg"] : "inicio";
 
                     include("paginas/".$pg.".php");

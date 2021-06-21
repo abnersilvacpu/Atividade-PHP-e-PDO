@@ -5,7 +5,10 @@ table{
 
 table, td, th{
     border: solid 1px #000;
+    background-color: #ffffff;
+    
 }
+
 
 #div-form{
     text-align: center;
@@ -74,7 +77,7 @@ textarea{
 }
 
 select{
-    background-color: #fff;
+    background-color: rgb(255, 255, 255);
 }
 
 button{
@@ -136,4 +139,9 @@ a{
     border: 1px solid rgb(222, 45, 20);
     background: #d85746;
     color: white;
+}
+#novo-usuario{
+    text-align: center;
+    margin: auto 0;
+    background-color: #000;
 }

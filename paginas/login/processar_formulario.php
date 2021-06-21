@@ -5,7 +5,7 @@ if(!empty($_POST)){
     $senha = $_POST["senha"];
 
     if($usuario == "admin" && md5($senha) == md5("admin123")){
-        $_SESSION["nome"] = "Alexandre";
+        $_SESSION["nome"] = "Abner";
 
 ?>
         <span style="color:green;">Login efetuado!</span>
