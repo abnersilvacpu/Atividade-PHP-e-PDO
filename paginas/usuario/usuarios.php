@@ -1,6 +1,6 @@
 <?php
 
-$sql = "SELECT id, nome, usuario, data_hora_criacao, data_hora_atualizacao FROM usuarios";
+$sql = "SELECT id, nome, usuario, DATE_FORMAT(data_hora_criacao, '%d/%m/%Y - %H:%i:%S'), DATE_FORMAT(data_hora_atualizacao, '%d/%m/%Y - %H:%i:%S') FROM usuarios";
 
 $result = $conn->query($sql, PDO::FETCH_ASSOC);
 

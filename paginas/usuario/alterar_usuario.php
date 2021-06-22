@@ -6,13 +6,20 @@
     $usuario = $_POST["usuario"];
     $senha = $_POST["senha"];
     $data_hora_atualizacao = date('Y-m-d H:i:s');
+    $user= $_SESSION["nome"];
+    $acao = ("Alteração do usuário referente ao ID: ".$id);
+    $data_hora_log = date('Y-m-d H:i:s');    
     
     
     $stmt = $conn->prepare("UPDATE usuarios set nome = :nome, usuario = :usuario,  senha = :senha, data_hora_atualizacao = :data_hora_atualizacao where id = :id");
+    $stmt1 = $conn->prepare("INSERT INTO logs (user, acao, data_hora_log) VALUES (:user, :acao, :data_hora_log)");
 
     $bind_param = ["nome" => $nome, "usuario" => $usuario, "senha" => md5($senha), "data_hora_atualizacao" => $data_hora_atualizacao, "id" => $id];
+    $bind_param1 = ["user"=> $user, "acao" =>$acao, "data_hora_log"=>$data_hora_log];
+
     try {            
         $stmt->execute($bind_param);
+        $stmt1->execute($bind_param1);
         echo '<div class="msg-cadastro-contato msg-cadastro-sucesso">Registro alterado com sucesso!</div>';
     } catch(PDOExecption $e) {
         $conn->rollback();
