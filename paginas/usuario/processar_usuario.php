@@ -9,7 +9,7 @@ if(!empty($_POST)){
     $senha = $_POST["senha"];
     $data_hora_criacao = date('Y-m-d H:i:s');
     $user= $_SESSION["nome"];
-    $acao = ("O User: ".$user." cadastrou um novo usuário");
+    $acao = ("O User: ".$user." cadastrou um novo usuário: ");
     $data_hora_log = date('Y-m-d H:i:s');
 
 
@@ -22,8 +22,10 @@ if(!empty($_POST)){
     try {
         $conn->beginTransaction();
         $stmt->execute($bind_param);
+        $last_id = $conn->lastInsertId();
+        $bind_param1['acao'] .= $last_id;
         $stmt1->execute($bind_param1);
-        echo '<div class="msg-cadastro-contato msg-cadastro-sucesso">Registro ' . $conn->lastInsertId() . ' inserido no banco!</div>';
+        echo '<div class="msg-cadastro-contato msg-cadastro-sucesso">Registro ' . $last_id . ' inserido no banco!</div>';
         $conn->commit();
     } catch(PDOExecption $e) {
         $conn->rollback();

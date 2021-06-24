@@ -13,7 +13,7 @@
         </div>
         <div>
             <label>Senha</label>
-            <input type="senha" name="senha" placeholder="Digite sua senha..." />
+            <input type="password" name="senha" placeholder="Digite sua senha..." />
         </div>
         <button type="submit">Cadastrar</button>
     </form>
